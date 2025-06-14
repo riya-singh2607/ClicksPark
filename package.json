@@ -7,7 +7,7 @@
     "lucide-react": "^0.263.0",
     "react-tilt": "^1.0.2",
     "react-modal": "^3.16.1",
-    "react-datepicker": "^4.8.8.0"
+    "react-datepicker": "^4.8.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.3",
