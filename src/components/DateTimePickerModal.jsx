@@ -1,10 +1,8 @@
-// src/components/DateTimePickerModal.jsx
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-// Bind modal to the root element for accessibility
 Modal.setAppElement('#root');
 
 const DateTimePickerModal = ({ isOpen, onRequestClose }) => {
@@ -13,28 +11,28 @@ const DateTimePickerModal = ({ isOpen, onRequestClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Selected Date:', selectedDate);
-    onRequestClose(); // Close the modal after submission
+    onRequestClose();
   };
 
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50"
+      className="fixed inset-0 flex items-center justify-center p-2 bg-black bg-opacity-50"
       overlayClassName="fixed inset-0"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
     >
-      <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-lg">
-        <h2 id="modal-title" className="text-2xl font-bold text-gray-900 mb-4">
+      <div className="bg-white rounded-lg p-4 max-w-sm w-full shadow-md">
+        <h2 id="modal-title" className="text-xl font-bold text-gray-900 mb-2">
           Schedule a Consultation
         </h2>
-        <p id="modal-description" className="text-gray-600 mb-6">
+        <p id="modal-description" className="text-gray-600 mb-3">
           Select a date and time for your free consultation.
         </p>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="date-picker" className="block text-gray-700 font-medium mb-2">
+          <div className="mb-2">
+            <label htmlFor="date-picker" className="block text-gray-700 font-medium mb-1 text-sm">
               Date and Time
             </label>
             <DatePicker
@@ -45,21 +43,21 @@ const DateTimePickerModal = ({ isOpen, onRequestClose }) => {
               timeFormat="HH:mm"
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-yellow-400 text-sm"
             />
           </div>
-          <div className="flex justify-end space-x-4">
+          <div className="flex justify-end space-x-2">
             <button
               type="button"
               onClick={onRequestClose}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-gray-300"
+              className="px-2 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 text-sm"
               aria-label="Cancel"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-500"
+              className="px-2 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500 text-sm"
               aria-label="Schedule consultation"
             >
               Schedule

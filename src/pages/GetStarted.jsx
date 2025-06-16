@@ -31,45 +31,35 @@ const GetStarted = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log('Form submitted:', formData);
-      // Add API call or navigation logic here
     }
   };
 
-  // Animation variants for section elements
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, rotate: -5 },
-    visible: (i) => ({
-      opacity: 1,
-      rotate: 0,
-      transition: { delay: i * 0.2, duration: 0.5, ease: 'easeOut' },
-    }),
-    hover: { scale: 1.05, rotate: 2, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' },
+    visible: (i) => ({ opacity: 1, rotate: 0, transition: { delay: i * 0.1, duration: 0.3 } }),
+    hover: { scale: 1.03, rotate: 1, boxShadow: '0 5px 10px rgba(0,0,0,0.1)' },
   };
 
   const buttonVariants = {
-    hover: { scale: 1.1, boxShadow: '0 0 15px rgba(250, 204, 21, 0.5)' },
+    hover: { scale: 1.05, boxShadow: '0 0 10px rgba(250, 204, 21, 0.3)' },
     tap: { scale: 0.95 },
   };
 
   const { scrollY } = useScroll();
-  const yWave = useTransform(scrollY, [0, 300], [0, -20]);
+  const yWave = useTransform(scrollY, [0, 200], [0, -10]);
 
   return (
-    <section className="relative min-h-screen py-20 px-6 bg-gradient-to-br from-yellow-50 to-white overflow-hidden">
-      {/* Animated Wave Background */}
+    <section className="relative min-h-[70vh] py-12 px-4 bg-gradient-to-br from-yellow-50 to-white overflow-hidden">
       <motion.div
         className="absolute inset-0 z-0"
         style={{ y: yWave }}
@@ -88,23 +78,22 @@ const GetStarted = () => {
         </svg>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Page Heading */}
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 mb-4"
+            className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 mb-2"
           >
             Launch Your Digital Adventure
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-sm md:text-base text-gray-600 max-w-xl mx-auto"
           >
             Connect with our experts to unlock a tailored strategy that skyrockets your brand online!
           </motion.p>
@@ -114,15 +103,14 @@ const GetStarted = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-5 gap-8"
+          className="grid md:grid-cols-5 gap-4"
         >
-          {/* Left: What You'll Get */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 relative"
+            className="md:col-span-2"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Growth Toolkit</h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Your Growth Toolkit</h2>
+            <div className="space-y-2">
               {[
                 'Free Website Audit & Report',
                 'Custom Digital Marketing Plan',
@@ -136,37 +124,34 @@ const GetStarted = () => {
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
-                  className="bg-white p-4 rounded-lg shadow-lg border border-yellow-100 transform"
-                  style={{ zIndex: 4 - i }}
+                  className="bg-white p-2 rounded-lg shadow-md border border-yellow-100"
                 >
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-6 h-6 text-yellow-400 animate-pulse" />
-                    <span className="text-gray-700 text-base">{item}</span>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-yellow-400" />
+                    <span className="text-gray-700 text-sm">{item}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
             <motion.div
               variants={itemVariants}
-              className="mt-8"
+              className="mt-4"
             >
               <img
-                src="/digital-marketing-illustration.svg" // Replace with your custom SVG or asset
+                src="/digital-marketing-illustration.svg"
                 alt="Digital Marketing Illustration"
-                className="w-full h-auto rounded-xl shadow-xl"
-                onError={(e) => (e.target.src = 'https://source.unsplash.com/featured/?digitalmarketing')} // Fallback
+                className="w-full h-32 rounded-lg shadow-md"
+                onError={(e) => (e.target.src = 'https://source.unsplash.com/featured/?digitalmarketing')}
               />
             </motion.div>
           </motion.div>
 
-          {/* Right: Form */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-3 bg-white p-10 rounded-2xl shadow-xl border border-gray-100"
+            className="md:col-span-3 bg-white p-6 rounded-xl shadow-md border border-gray-100"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Let’s Make Magic Happen</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Input */}
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Let’s Make Magic Happen</h3>
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div className="relative">
                 <motion.input
                   type="text"
@@ -174,24 +159,22 @@ const GetStarted = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your Name"
-                  className={`w-full p-4 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
+                  className={`w-full p-2 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
                     errors.name ? 'border-red-400 animate-shake' : 'border-gray-200'
-                  }`}
+                  } text-sm`}
                   required
-                  whileFocus={{ scale: 1.02 }}
+                  whileFocus={{ scale: 1.01 }}
                 />
                 {errors.name && (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-red-400 text-sm mt-1"
+                    className="text-red-400 text-xs mt-1"
                   >
                     {errors.name}
                   </motion.p>
                 )}
               </div>
-
-              {/* Email Input */}
               <div className="relative">
                 <motion.input
                   type="email"
@@ -199,41 +182,37 @@ const GetStarted = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Your Email"
-                  className={`w-full p-4 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
+                  className={`w-full p-2 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
                     errors.email ? 'border-red-400 animate-shake' : 'border-gray-200'
-                  }`}
+                  } text-sm`}
                   required
-                  whileFocus={{ scale: 1.02 }}
+                  whileFocus={{ scale: 1.01 }}
                 />
                 {errors.email && (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-red-400 text-sm mt-1"
+                    className="text-red-400 text-xs mt-1"
                   >
                     {errors.email}
                   </motion.p>
                 )}
               </div>
-
-              {/* Business Name Input */}
               <motion.input
                 type="text"
                 name="business"
                 value={formData.business}
                 onChange={handleChange}
                 placeholder="Your Business Name"
-                className="w-full p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all"
-                whileFocus={{ scale: 1.02 }}
+                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-sm"
+                whileFocus={{ scale: 1.01 }}
               />
-
-              {/* Goal Select */}
               <motion.select
                 name="goal"
                 value={formData.goal}
                 onChange={handleChange}
-                className="w-full p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all"
-                whileFocus={{ scale: 1.02 }}
+                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-sm"
+                whileFocus={{ scale: 1.01 }}
               >
                 <option value="">What’s Your Big Goal?</option>
                 <option value="leads">Get More Leads</option>
@@ -241,27 +220,23 @@ const GetStarted = () => {
                 <option value="product">Launch New Product</option>
                 <option value="website">Website Development</option>
               </motion.select>
-
-              {/* Needs Textarea */}
               <motion.textarea
                 name="needs"
                 value={formData.needs}
                 onChange={handleChange}
                 placeholder="Tell us your big idea!"
-                className="w-full p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all h-32 resize-none"
-                whileFocus={{ scale: 1.02 }}
+                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all h-20 resize-none text-sm"
+                whileFocus={{ scale: 1.01 }}
               />
-
-              {/* Submit Button */}
               <motion.button
                 type="submit"
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 transition-all"
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-medium py-2 rounded-lg flex items-center justify-center space-x-1 text-sm"
               >
                 <span>Book Your Free Call</span>
-                <ArrowRight className="w-5 h-5 animate-bounce-right" />
+                <ArrowRight className="w-4 h-4" />
               </motion.button>
             </form>
           </motion.div>

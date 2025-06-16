@@ -1,4 +1,3 @@
-// src/pages/Contact.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -44,34 +43,32 @@ function Contact() {
       return;
     }
     setError('');
-    // Submit logic here (e.g., API call)
     console.log('Form submitted:', form);
   };
 
   return (
-    <>
-      <div className="container mx-auto px-4 md:px-6 py-24">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12">
+      <div className="w-full max-w-xl px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-black mb-1">Contact Us</h1>
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
             Let's connect and kickstart your digital transformation today.
           </p>
         </motion.div>
 
-        {/* Contact Form */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200"
+          className="bg-white p-6 rounded-xl shadow-md border border-gray-200 w-full"
         >
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
                   First Name<span className="text-yellow-400">*</span>
@@ -81,7 +78,7 @@ function Contact() {
                   name="firstName"
                   value={form.firstName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                   required
                   aria-required="true"
                 />
@@ -95,7 +92,7 @@ function Contact() {
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                   required
                   aria-required="true"
                 />
@@ -111,7 +108,7 @@ function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                 required
                 aria-required="true"
               />
@@ -125,7 +122,7 @@ function Contact() {
                   name="country"
                   value={form.country}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                  className="border border-gray-300 rounded-lg px-2 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                   aria-label="Country code"
                 >
                   <option>India (+91)</option>
@@ -139,7 +136,7 @@ function Contact() {
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                   required
                   aria-required="true"
                 />
@@ -154,7 +151,7 @@ function Contact() {
                 name="company"
                 value={form.company}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                 required
                 aria-required="true"
               />
@@ -168,7 +165,7 @@ function Contact() {
                 name="website"
                 value={form.website}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                 required
                 aria-required="true"
               />
@@ -177,20 +174,15 @@ function Contact() {
               <label htmlFor="revenue" className="block text-sm font-medium text-gray-700 mb-1">
                 Annual Revenue<span className="text-yellow-400">*</span>
               </label>
-              <select
+              <input
                 id="revenue"
                 name="revenue"
                 value={form.revenue}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                 required
                 aria-required="true"
-              >
-                <option value="">Select Revenue</option>
-                <option value="<1M">Less than $1M</option>
-                <option value="1M-10M">$1M - $10M</option>
-                <option value=">10M">More than $10M</option>
-              </select>
+              />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
@@ -201,11 +193,11 @@ function Contact() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all"
-                rows={4}
+                rows="4"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
                 required
                 aria-required="true"
-              />
+              ></textarea>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -214,7 +206,7 @@ function Contact() {
                 type="checkbox"
                 checked={form.agree}
                 onChange={handleChange}
-                className="w-4 h-4 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-400"
+                className="w-4 h-4 border border-gray-300 rounded focus:ring-1 focus:ring-yellow-400"
                 required
                 aria-required="true"
               />
@@ -227,12 +219,12 @@ function Contact() {
               </label>
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
-            <div className="text-center">
+            <div className="text-center pt-2">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 type="submit"
-                className="bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:bg-yellow-500 transition-all w-full sm:w-auto"
+                className="bg-yellow-400 text-black px-6 py-3 rounded-full text-base font-medium shadow hover:bg-yellow-500 w-full sm:w-auto"
                 aria-label="Submit contact form"
               >
                 Send Message
@@ -241,7 +233,7 @@ function Contact() {
           </form>
         </motion.div>
       </div>
-    </>
+    </div>
   );
 }
 
