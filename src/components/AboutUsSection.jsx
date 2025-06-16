@@ -18,7 +18,7 @@ const AboutUsSection = () => {
   };
 
   return (
-    <section id="about" className="py-6 sm:py-8 md:py-12 bg-white relative overflow-hidden">
+    <section id="about" className="py-6 sm:py-8 md:py-12 lg:py-16 bg-white relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <svg
           className="w-full h-full opacity-10"
@@ -34,21 +34,25 @@ const AboutUsSection = () => {
         </svg>
       </div>
       <motion.div
-        className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10"
+        className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
           <motion.div
-            className="hidden md:block"
+            className="flex justify-center mb-4 md:mb-0"
             variants={imageVariants}
           >
             <div className="relative">
-              <div className="w-40 sm:w-48 md:w-60 h-40 sm:h-48 md:h-60 bg-yellow-100 rounded-full flex items-center justify-center shadow-md">
+              <motion.div
+                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="w-40 sm:w-48 md:w-60 lg:w-72 h-40 sm:h-48 md:h-60 lg:h-72 bg-yellow-100 rounded-full flex items-center justify-center shadow-md"
+              >
                 <svg
-                  className="w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 text-yellow-400"
+                  className="w-20 sm:w-24 md:w-28 lg:w-32 h-20 sm:h-24 md:h-28 lg:h-32 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -59,33 +63,42 @@ const AboutUsSection = () => {
                     d="M13 10V3L4 14h7v7l9-11h-7z"
                   />
                 </svg>
-              </div>
+              </motion.div>
               <div className="absolute -top-2 sm:-top-3 -left-2 sm:-left-3 w-4 sm:w-6 h-4 sm:h-6 bg-yellow-400 rounded-full opacity-30"></div>
               <div className="absolute bottom-0 right-0 w-3 sm:w-4 h-3 sm:h-4 bg-yellow-400 rounded-full opacity-30"></div>
             </div>
           </motion.div>
           <div className="text-center md:text-left">
             <motion.div variants={itemVariants} className="relative inline-block mb-2 sm:mb-3">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black">
                 About <span className="text-yellow-400">Us</span>
               </h2>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 sm:h-1 bg-yellow-400 rounded-full w-12 sm:w-16" />
+              <div className="absolute bottom-0 left-0 h-0.5 sm:h-1 bg-yellow-400 rounded-full w-12 sm:w-16" />
             </motion.div>
-            <motion.div variants={containerVariants} className="space-y-2 sm:space-y-3 max-w-xs sm:max-w-md md:max-w-xl mx-auto md:mx-0">
-              <motion.p variants={itemVariants} className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                We are a <span className="text-yellow-400 font-medium">forward-thinking organization</span>, established on 7 August 2024, dedicated to promoting digital marketing excellence and innovative educational initiatives. With a strong foundation in both technology and strategy, we help brands grow online while supporting learning platforms that prepare individuals for the future.
+            <motion.div variants={containerVariants} className="space-y-2 sm:space-y-3 max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto md:mx-0 text-left">
+              <motion.p
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, color: "#FACC15" }}
+                transition={{ duration: 0.2 }}
+                className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600"
+              >
+                We're a <span className="text-yellow-400 font-medium">forward-thinking organization</span>, launched on August 7, 2024, blending digital marketing excellence with innovative education. With a tech-savvy, strategic edge, we boost brands online and empower learning platforms for the future.
               </motion.p>
-              <motion.p variants={itemVariants} className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                Our dual focus on marketing and education allows us to create <span className="text-yellow-400 font-medium">impactful campaigns</span> and projects that not only drive engagement but also foster knowledge and skill development. From startups to institutions, we partner with clients to deliver customized solutions that make a measurable difference.
+              <motion.p
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, color: "#FACC15" }}
+                transition={{ duration: 0.2 }}
+                className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600"
+              >
+                Our dual focus drives <span className="text-yellow-400 font-medium">impactful campaigns</span> and projects, fostering engagement and skill development for startups to institutions. Specializing in brand promotion, building, and growth, we harness cutting-edge digital tools and social media for maximum visibility and results.
               </motion.p>
-              <motion.p variants={itemVariants} className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                Specializing in brand promotion, brand building, and strategic marketing growth, we leverage cutting-edge digital marketing platforms and social media to maximize visibility and audience connection. Whether it's enhancing brand identity or driving user acquisition, we bring results-driven innovation to every project.
-              </motion.p>
-              <motion.p variants={itemVariants} className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                With a team of <span className="text-yellow-400 font-medium">passionate professionals</span>, we combine creativity, data-driven insights, and a deep understanding of digital trends to fuel growth and transformation.
-              </motion.p>
-              <motion.p variants={itemVariants} className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                At the heart of everything we do is a commitment to <span className="text-yellow-400 font-medium">innovation, integrity, and results</span>—empowering our partners to thrive in a digital-first world.
+              <motion.p
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, color: "#FACC15" }}
+                transition={{ duration: 0.2 }}
+                className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600"
+              >
+                Led by a <span className="text-yellow-400 font-medium">passionate team</span>, we fuse creativity, data insights, and trend expertise to fuel transformation. Committed to <span className="text-yellow-400 font-medium">innovation, integrity, and success</span>, we empower partners to thrive in a digital world!
               </motion.p>
             </motion.div>
           </div>

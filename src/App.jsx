@@ -107,7 +107,7 @@ function WorkSection({ workProjects }) {
   };
 
   return (
-    <section id="work" className="py-8 sm:py-12 bg-gray-50">
+    <section id="work" className="py-10 sm:py-16 bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           variants={headerVariants}
@@ -124,7 +124,7 @@ function WorkSection({ workProjects }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {workProjects.map((work, i) => (
             <Tilt
               key={i}
@@ -136,9 +136,9 @@ function WorkSection({ workProjects }) {
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
-                whileHover="hover"
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.25)' }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-full"
+                className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full"
               >
                 <div className="relative w-full h-32 sm:h-40 md:h-48">
                   <motion.img
@@ -153,7 +153,7 @@ function WorkSection({ workProjects }) {
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center"
+                    className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
                   >
                     <motion.span
                       initial={{ opacity: 0 }}
@@ -165,7 +165,7 @@ function WorkSection({ workProjects }) {
                     </motion.span>
                   </motion.div>
                 </div>
-                <div className="p-2 sm:p-3 md:p-4 flex flex-col flex-1">
+                <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1">
                   <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-1 sm:px-2 py-1 rounded-full mb-1 sm:mb-2">
                     {work.tag}
                   </span>
@@ -178,7 +178,7 @@ function WorkSection({ workProjects }) {
                   <motion.a
                     href="#"
                     whileHover={{ x: 5 }}
-                    className="mt-1 sm:mt-2 text-yellow-500 font-medium text-xs hover:underline"
+                    className="mt-1 sm:mt-2 text-yellow-500 font-bold text-xs hover:underline"
                   >
                     View Project →
                   </motion.a>
@@ -446,47 +446,48 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Hero Section with Enhanced Gradient and Pattern */}
+      {/* Hero Section with Video Background */}
       <header
         id="home"
-        className="relative min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-yellow-100 via-yellow-50 to-white px-2 sm:px-4 md:px-6"
+        className="relative min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden px-2 sm:px-4 md:px-6 lg:px-8"
       >
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ y: y1 }}
-        >
-          <svg
-            className="absolute inset-0 w-full h-full opacity-15"
-            viewBox="0 0 1440 320"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute min-w-full min-h-full object-cover"
+            style={{ filter: 'brightness(0.7)' }}
           >
-            <path
-              fill="#facc15"
-              d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,149.3C672,139,768,149,864,154.7C960,160,1056,160,1152,176C1248,192,1344,224,1392,240L1440,256V320H0V160Z"
-            />
-          </svg>
-        </motion.div>
+            <source src="/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Overlay for better text visibility */}
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10 text-center"
+          className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10 text-center"
           style={{ y: y2 }}
         >
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-2 sm:mb-4 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-2 sm:mb-4 leading-tight"
           >
-            Amplify Your <span className="text-yellow-600">Digital Impact</span>
+            Amplify Your <span className="text-yellow-400">Digital Impact</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
-            className="text-sm sm:text-base md:text-lg text-gray-700 mb-3 sm:mb-6 max-w-xs sm:max-w-md md:max-w-xl mx-auto"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-3 sm:mb-6 max-w-xs sm:max-w-md md:max-w-xl mx-auto"
           >
             Bold digital solutions to make your brand unstoppable.
           </motion.p>
@@ -496,7 +497,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
-            className="bg-yellow-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold hover:bg-yellow-700 transition-all duration-300 flex items-center mx-auto"
+            className="bg-yellow-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-base sm:text-lg font-semibold hover:bg-yellow-700 transition-all duration-300 flex items-center mx-auto"
             aria-label="Get started with our services"
             onClick={() => navigate('/get-started')}
             onKeyDown={(e) => e.key === 'Enter' && navigate('/get-started')}
@@ -507,9 +508,9 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       </header>
 
       {/* Carousel Section with Overlay */}
-      <section className="py-4 sm:py-6 md:py-8 bg-gradient-to-br from-yellow-50 to-white overflow-hidden relative">
+      <section className="py-4 sm:py-6 md:py-8 lg:py-10 bg-gradient-to-br from-yellow-50 to-white overflow-hidden relative">
         <div className="absolute inset-0 bg-black bg-opacity-5"></div>
-        <div className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <motion.div
             className="overflow-hidden"
             initial={{ opacity: 0 }}
@@ -524,6 +525,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                   x: { duration: 45, ease: 'linear', repeat: Infinity, repeatType: 'loop' },
                 },
               }}
+              style={{ marginTop: '-20px' }}
             >
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-500 inline-block pr-4 sm:pr-8">
                 {carouselSentences[0]}
@@ -540,20 +542,20 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       <AboutUsSection />
 
       {/* Services Section */}
-      <section id="services" className="py-6 sm:py-8 md:py-12 bg-white">
-        <div className="container mx-auto px-2 sm:px-4 md:px-6">
+      <section id="services" className="py-6 sm:py-8 md:py-12 lg:py-16 bg-white">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-4 sm:mb-6"
+            className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Our Expertise</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-md mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-2">Our Expertise</h2>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-xs sm:max-w-md mx-auto">
               Tailored digital solutions for your brand.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -562,14 +564,14 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-                className="bg-white p-2 sm:p-3 md:p-4 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300"
+                className="bg-white p-2 sm:p-3 md:p-4 lg:p-6 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300 transform hover:scale-105"
                 role="article"
                 aria-labelledby={`service-title-${index}`}
               >
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2 sm:mb-3"
+                  className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2 sm:mb-3 shadow-md transform hover:rotate-6"
                 >
                   {service.icon}
                 </motion.div>
@@ -601,15 +603,15 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       <WorkSection workProjects={workProjects} />
 
       {/* How We Generate Leads Section */}
-      <section className="py-6 sm:py-8 md:py-12 bg-gradient-to-b from-yellow-50 to-white">
-        <div className="container mx-auto px-2 sm:px-4 md:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
+      <section className="py-6 sm:py-8 md:py-12 lg:py-16 bg-gradient-to-b from-yellow-50 to-white">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3 sm:mb-4">
             How We Generate Leads
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-xl mx-auto mb-4 sm:mb-6">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-xs sm:max-w-xl mx-auto mb-4 sm:mb-6">
             We use data-driven LinkedIn campaigns to connect you with decision-makers.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {[
               { icon: <Search className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Find Prospects", desc: "Targeted lists of ideal prospects on LinkedIn." },
               { icon: <Edit className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Write Messages", desc: "Personalized messages that get responses." },
@@ -658,8 +660,8 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-6 sm:py-8 md:py-12 bg-gray-50">
-        <div className="container mx-auto px-2 sm:px-4 md:px-6">
+      <section id="contact" className="py-6 sm:py-8 md:py-12 lg:py-16 bg-gray-50">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}

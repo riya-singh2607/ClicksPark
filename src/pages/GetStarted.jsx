@@ -127,7 +127,9 @@ const GetStarted = () => {
                   className="bg-white p-1 sm:p-2 rounded-md sm:rounded-lg shadow-md border border-yellow-100"
                 >
                   <div className="flex items-center space-x-1 sm:space-x-2">
-                    <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400" />
+                    <CheckCircle
+                      className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 transform hover:scale-110 transition-transform"
+                    />
                     <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                   </div>
                 </motion.div>
@@ -163,7 +165,8 @@ const GetStarted = () => {
                     errors.name ? 'border-red-400 animate-shake' : 'border-gray-200'
                   } text-xs sm:text-sm`}
                   required
-                  whileFocus={{ scale: 1.01 }}
+                  whileFocus={{ scale: 1.01, borderColor: "#FACC15", boxShadow: "0 0 8px rgba(250, 204, 21, 0.4)" }}
+                  transition={{ duration: 0.2 }}
                 />
                 {errors.name && (
                   <motion.p
@@ -186,7 +189,8 @@ const GetStarted = () => {
                     errors.email ? 'border-red-400 animate-shake' : 'border-gray-200'
                   } text-xs sm:text-sm`}
                   required
-                  whileFocus={{ scale: 1.01 }}
+                  whileFocus={{ scale: 1.01, borderColor: "#FACC15", boxShadow: "0 0 8px rgba(250, 204, 21, 0.4)" }}
+                  transition={{ duration: 0.2 }}
                 />
                 {errors.email && (
                   <motion.p
@@ -198,45 +202,56 @@ const GetStarted = () => {
                   </motion.p>
                 )}
               </div>
-              <motion.input
-                type="text"
-                name="business"
-                value={formData.business}
-                onChange={handleChange}
-                placeholder="Your Business Name"
-                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
-                whileFocus={{ scale: 1.01 }}
-              />
-              <motion.select
-                name="goal"
-                value={formData.goal}
-                onChange={handleChange}
-                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
-                whileFocus={{ scale: 1.01 }}
-              >
-                <option value="">What’s Your Big Goal?</option>
-                <option value="leads">Get More Leads</option>
-                <option value="branding">Improve Branding</option>
-                <option value="product">Launch New Product</option>
-                <option value="website">Website Development</option>
-              </motion.select>
-              <motion.textarea
-                name="needs"
-                value={formData.needs}
-                onChange={handleChange}
-                placeholder="Tell us your big idea!"
-                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all h-16 sm:h-20 resize-none text-xs sm:text-sm"
-                whileFocus={{ scale: 1.01 }}
-              />
+              <div className="relative">
+                <label htmlFor="business" className="sr-only">Business Type</label>
+                <motion.input
+                  type="text"
+                  id="business"
+                  name="business"
+                  value={formData.business}
+                  onChange={handleChange}
+                  placeholder="Your Business Type (e.g., E-commerce, SaaS)"
+                  className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
+                  whileFocus={{ scale: 1.01, borderColor: "#FACC15", boxShadow: "0 0 8px rgba(250, 204, 21, 0.4)" }}
+                  transition={{ duration: 0.2 }}
+                />
+              </div>
+              <div className="relative">
+                <label htmlFor="goal" className="sr-only">Primary Goal</label>
+                <motion.input
+                  type="text"
+                  id="goal"
+                  name="goal"
+                  value={formData.goal}
+                  onChange={handleChange}
+                  placeholder="Your Primary Goal (e.g., Increase Leads, Boost Sales)"
+                  className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
+                  whileFocus={{ scale: 1.01, borderColor: "#FACC15", boxShadow: "0 0 8px rgba(250, 204, 21, 0.4)" }}
+                  transition={{ duration: 0.2 }}
+                />
+              </div>
+              <div className="relative">
+                <label htmlFor="needs" className="sr-only">Specific Needs</label>
+                <motion.textarea
+                  id="needs"
+                  name="needs"
+                  value={formData.needs}
+                  onChange={handleChange}
+                  placeholder="Tell us about your specific needs or challenges (optional)"
+                  rows="3"
+                  className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
+                  whileFocus={{ scale: 1.01, borderColor: "#FACC15", boxShadow: "0 0 8px rgba(250, 204, 21, 0.4)" }}
+                  transition={{ duration: 0.2 }}
+                ></motion.textarea>
+              </div>
               <motion.button
                 type="submit"
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-medium py-1 sm:py-2 rounded-md sm:rounded-lg flex items-center justify-center space-x-1 text-xs sm:text-sm"
+                className="w-full bg-yellow-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl hover:bg-yellow-600 transition-all font-semibold text-sm sm:text-base flex items-center justify-center gap-1 sm:gap-2"
               >
-                <span>Book Your Free Call</span>
-                <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4" />
+                Submit for Custom Plan <ArrowRight className="w-4 h-4" />
               </motion.button>
             </form>
           </motion.div>
