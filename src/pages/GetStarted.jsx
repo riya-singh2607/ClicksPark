@@ -59,7 +59,7 @@ const GetStarted = () => {
   const yWave = useTransform(scrollY, [0, 200], [0, -10]);
 
   return (
-    <section className="relative min-h-[70vh] py-12 px-4 bg-gradient-to-br from-yellow-50 to-white overflow-hidden">
+    <section className="relative min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] py-6 sm:py-8 md:py-12 px-2 sm:px-4">
       <motion.div
         className="absolute inset-0 z-0"
         style={{ y: yWave }}
@@ -78,22 +78,22 @@ const GetStarted = () => {
         </svg>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-xs sm:max-w-lg md:max-w-4xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center mb-8"
+          className="text-center mb-4 sm:mb-6 md:mb-8"
         >
           <motion.h1
             variants={itemVariants}
-            className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 mb-2"
+            className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 mb-1 sm:mb-2"
           >
             Launch Your Digital Adventure
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-base text-gray-600 max-w-xl mx-auto"
+            className="text-xs sm:text-sm md:text-base text-gray-600 max-w-xs sm:max-w-md mx-auto"
           >
             Connect with our experts to unlock a tailored strategy that skyrockets your brand online!
           </motion.p>
@@ -103,14 +103,14 @@ const GetStarted = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-5 gap-4"
+          className="grid grid-cols-1 md:grid-cols-5 gap-2 sm:gap-4"
         >
           <motion.div
             variants={itemVariants}
             className="md:col-span-2"
           >
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Your Growth Toolkit</h2>
-            <div className="space-y-2">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">Your Growth Toolkit</h2>
+            <div className="space-y-1 sm:space-y-2">
               {[
                 'Free Website Audit & Report',
                 'Custom Digital Marketing Plan',
@@ -124,23 +124,23 @@ const GetStarted = () => {
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
-                  className="bg-white p-2 rounded-lg shadow-md border border-yellow-100"
+                  className="bg-white p-1 sm:p-2 rounded-md sm:rounded-lg shadow-md border border-yellow-100"
                 >
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-yellow-400" />
-                    <span className="text-gray-700 text-sm">{item}</span>
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400" />
+                    <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
             <motion.div
               variants={itemVariants}
-              className="mt-4"
+              className="mt-2 sm:mt-4"
             >
               <img
                 src="/digital-marketing-illustration.svg"
                 alt="Digital Marketing Illustration"
-                className="w-full h-32 rounded-lg shadow-md"
+                className="w-full h-24 sm:h-32 rounded-md sm:rounded-lg shadow-md"
                 onError={(e) => (e.target.src = 'https://source.unsplash.com/featured/?digitalmarketing')}
               />
             </motion.div>
@@ -148,10 +148,10 @@ const GetStarted = () => {
 
           <motion.div
             variants={itemVariants}
-            className="md:col-span-3 bg-white p-6 rounded-xl shadow-md border border-gray-100"
+            className="md:col-span-3 bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-md border border-gray-100"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Let’s Make Magic Happen</h3>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">Let’s Make Magic Happen</h3>
+            <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3">
               <div className="relative">
                 <motion.input
                   type="text"
@@ -159,9 +159,9 @@ const GetStarted = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your Name"
-                  className={`w-full p-2 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
+                  className={`w-full p-1 sm:p-2 border-2 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
                     errors.name ? 'border-red-400 animate-shake' : 'border-gray-200'
-                  } text-sm`}
+                  } text-xs sm:text-sm`}
                   required
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -182,9 +182,9 @@ const GetStarted = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Your Email"
-                  className={`w-full p-2 border-2 rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
+                  className={`w-full p-1 sm:p-2 border-2 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all ${
                     errors.email ? 'border-red-400 animate-shake' : 'border-gray-200'
-                  } text-sm`}
+                  } text-xs sm:text-sm`}
                   required
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -204,14 +204,14 @@ const GetStarted = () => {
                 value={formData.business}
                 onChange={handleChange}
                 placeholder="Your Business Name"
-                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-sm"
+                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 whileFocus={{ scale: 1.01 }}
               />
               <motion.select
                 name="goal"
                 value={formData.goal}
                 onChange={handleChange}
-                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-sm"
+                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 whileFocus={{ scale: 1.01 }}
               >
                 <option value="">What’s Your Big Goal?</option>
@@ -225,7 +225,7 @@ const GetStarted = () => {
                 value={formData.needs}
                 onChange={handleChange}
                 placeholder="Tell us your big idea!"
-                className="w-full p-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition-all h-20 resize-none text-sm"
+                className="w-full p-1 sm:p-2 border-2 border-gray-200 rounded-md sm:rounded-lg focus:outline-none focus:border-yellow-400 transition-all h-16 sm:h-20 resize-none text-xs sm:text-sm"
                 whileFocus={{ scale: 1.01 }}
               />
               <motion.button
@@ -233,10 +233,10 @@ const GetStarted = () => {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-medium py-2 rounded-lg flex items-center justify-center space-x-1 text-sm"
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-medium py-1 sm:py-2 rounded-md sm:rounded-lg flex items-center justify-center space-x-1 text-xs sm:text-sm"
               >
                 <span>Book Your Free Call</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4" />
               </motion.button>
             </form>
           </motion.div>

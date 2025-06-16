@@ -47,16 +47,16 @@ function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12">
-      <div className="w-full max-w-xl px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-4 sm:py-8 md:py-12">
+      <div className="w-full max-w-xs sm:max-w-md md:max-w-xl px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-8"
+          className="text-center mb-4 sm:mb-6 md:mb-8"
         >
-          <h1 className="text-2xl md:text-3xl font-extrabold text-black mb-1">Contact Us</h1>
-          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-black mb-1">Contact Us</h1>
+          <p className="text-xs sm:text-sm text-gray-600 max-w-xs sm:max-w-md md:max-w-2xl mx-auto">
             Let's connect and kickstart your digital transformation today.
           </p>
         </motion.div>
@@ -65,12 +65,12 @@ function Contact() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="bg-white p-6 rounded-xl shadow-md border border-gray-200 w-full"
+          className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-md border border-gray-200 w-full"
         >
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 md:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 md:gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="firstName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                   First Name<span className="text-yellow-400">*</span>
                 </label>
                 <input
@@ -78,13 +78,13 @@ function Contact() {
                   name="firstName"
                   value={form.firstName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                  className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                   required
                   aria-required="true"
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="lastName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                   Last Name<span className="text-yellow-400">*</span>
                 </label>
                 <input
@@ -92,14 +92,14 @@ function Contact() {
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                  className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                   required
                   aria-required="true"
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Email<span className="text-yellow-400">*</span>
               </label>
               <input
@@ -108,21 +108,21 @@ function Contact() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 required
                 aria-required="true"
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Phone Number<span className="text-yellow-400">*</span>
               </label>
-              <div className="flex gap-2">
+              <div className="flex gap-1 sm:gap-2">
                 <select
                   name="country"
                   value={form.country}
                   onChange={handleChange}
-                  className="border border-gray-300 rounded-lg px-2 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                  className="border border-gray-300 rounded-md sm:rounded-lg px-1 sm:px-2 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm w-1/3 sm:w-1/4"
                   aria-label="Country code"
                 >
                   <option>India (+91)</option>
@@ -136,14 +136,14 @@ function Contact() {
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                  className="flex-1 border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                   required
                   aria-required="true"
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Company<span className="text-yellow-400">*</span>
               </label>
               <input
@@ -151,13 +151,13 @@ function Contact() {
                 name="company"
                 value={form.company}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 required
                 aria-required="true"
               />
             </div>
             <div>
-              <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="website" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Website<span className="text-yellow-400">*</span>
               </label>
               <input
@@ -165,13 +165,13 @@ function Contact() {
                 name="website"
                 value={form.website}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 required
                 aria-required="true"
               />
             </div>
             <div>
-              <label htmlFor="revenue" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="revenue" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Annual Revenue<span className="text-yellow-400">*</span>
               </label>
               <input
@@ -179,13 +179,13 @@ function Contact() {
                 name="revenue"
                 value={form.revenue}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 required
                 aria-required="true"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                 Message<span className="text-yellow-400">*</span>
               </label>
               <textarea
@@ -193,13 +193,13 @@ function Contact() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                rows="4"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-sm"
+                rows="3"
+                className="w-full border border-gray-300 rounded-md sm:rounded-lg px-2 sm:px-3 py-1 sm:py-2 focus:ring-1 focus:ring-yellow-400 focus:border-yellow-400 transition-all text-xs sm:text-sm"
                 required
                 aria-required="true"
               ></textarea>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <input
                 id="agree"
                 name="agree"
@@ -210,7 +210,7 @@ function Contact() {
                 required
                 aria-required="true"
               />
-              <label htmlFor="agree" className="text-sm text-gray-700">
+              <label htmlFor="agree" className="text-xs sm:text-sm text-gray-700">
                 I agree to the{' '}
                 <a href="#" className="underline text-yellow-400 hover:text-yellow-500">
                   Privacy Policy
@@ -218,13 +218,13 @@ function Contact() {
                 <span className="text-yellow-400">*</span>
               </label>
             </div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-            <div className="text-center pt-2">
+            {error && <p className="text-red-500 text-xs sm:text-sm">{error}</p>}
+            <div className="text-center pt-1 sm:pt-2">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 type="submit"
-                className="bg-yellow-400 text-black px-6 py-3 rounded-full text-base font-medium shadow hover:bg-yellow-500 w-full sm:w-auto"
+                className="bg-yellow-400 text-black px-4 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-base font-medium shadow hover:bg-yellow-500 w-full sm:w-auto"
                 aria-label="Submit contact form"
               >
                 Send Message

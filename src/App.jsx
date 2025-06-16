@@ -108,23 +108,23 @@ function WorkSection({ workProjects }) {
 
   return (
     <section id="work" className="py-8 sm:py-12 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-6 sm:mb-8"
+          className="text-center mb-4 sm:mb-6 md:mb-8"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">
             Our Work
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl sm:max-w-2xl mx-auto">
             Explore our portfolio of innovative projects that drive digital success.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {workProjects.map((work, i) => (
             <Tilt
               key={i}
@@ -140,7 +140,7 @@ function WorkSection({ workProjects }) {
                 viewport={{ once: true }}
                 className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-full"
               >
-                <div className="relative w-full h-40 sm:h-48">
+                <div className="relative w-full h-32 sm:h-40 md:h-48">
                   <motion.img
                     src={work.image}
                     alt={work.title}
@@ -159,24 +159,26 @@ function WorkSection({ workProjects }) {
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                       transition={{ delay: 0.1, duration: 0.2 }}
-                      className="text-white text-xs sm:text-sm font-semibold"
+                      className="text-white text-xs sm:text-sm md:text-base font-semibold"
                     >
                       View Details
                     </motion.span>
                   </motion.div>
                 </div>
-                <div className="p-3 sm:p-4 flex flex-col flex-1">
-                  <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                <div className="p-2 sm:p-3 md:p-4 flex flex-col flex-1">
+                  <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-1 sm:px-2 py-1 rounded-full mb-1 sm:mb-2">
                     {work.tag}
                   </span>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1">{work.title}</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-tight flex-1">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1">
+                    {work.title}
+                  </h3>
+                  <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-tight flex-1">
                     {work.desc}
                   </p>
                   <motion.a
                     href="#"
                     whileHover={{ x: 5 }}
-                    className="mt-2 text-yellow-500 font-medium text-xs hover:underline"
+                    className="mt-1 sm:mt-2 text-yellow-500 font-medium text-xs hover:underline"
                   >
                     View Project →
                   </motion.a>
@@ -220,7 +222,7 @@ function AppContent() {
       >
         <Navbar onLetsTalk={() => setShowPopup(true)} />
       </motion.div>
-      <div className="pt-16">
+      <div className="pt-4 sm:pt-6 md:pt-16">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
@@ -304,33 +306,33 @@ function AppContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4"
         >
           <motion.div
             initial={{ scale: 0.7 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
-            className="bg-white p-4 sm:p-6 rounded-lg shadow-2xl max-w-md w-full mx-4"
+            className="bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full mx-2 sm:mx-4"
           >
             <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Subscribe to Our Newsletter</h3>
-            <p className="text-xs sm:text-sm text-gray-600 mb-4">Get the latest marketing tips and offers delivered to your inbox!</p>
-            <form className="space-y-3">
+            <p className="text-xs sm:text-sm text-gray-600 mb-3">Get the latest marketing tips and offers delivered to your inbox!</p>
+            <form className="space-y-2 sm:space-y-3">
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
+                className="w-full p-1 sm:p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-xs sm:text-sm"
                 aria-label="Email for subscription"
               />
               <button
                 type="submit"
-                className="w-full bg-yellow-500 text-white px-3 py-2 sm:py-2.5 rounded-lg hover:bg-yellow-600 transition-all text-sm"
+                className="w-full bg-yellow-500 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg hover:bg-yellow-600 transition-all text-xs sm:text-sm"
                 onClick={() => setShowSubscriptionPopup(false)}
               >
                 Subscribe
               </button>
             </form>
             <button
-              className="mt-3 text-gray-500 hover:text-gray-700 text-sm"
+              className="mt-2 sm:mt-3 text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
               onClick={() => setShowSubscriptionPopup(false)}
             >
               Close
@@ -344,18 +346,18 @@ function AppContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4"
         >
           <motion.div
             initial={{ scale: 0.7 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
-            className="bg-white p-4 sm:p-6 rounded-lg shadow-2xl max-w-md w-full mx-4"
+            className="bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full mx-2 sm:mx-4"
           >
             <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Special Offer!</h3>
-            <p className="text-xs sm:text-sm text-gray-600 mb-4">Get 20% off your first marketing campaign. Offer ends soon!</p>
+            <p className="text-xs sm:text-sm text-gray-600 mb-3">Get 20% off your first marketing campaign. Offer ends soon!</p>
             <button
-              className="w-full bg-yellow-500 text-white px-3 py-2 sm:py-2.5 rounded-lg hover:bg-yellow-600 transition-all text-sm"
+              className="w-full bg-yellow-500 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg hover:bg-yellow-600 transition-all text-xs sm:text-sm"
               onClick={() => {
                 setShowDiscountPopup(false);
                 navigate('/get-started');
@@ -364,7 +366,7 @@ function AppContent() {
               Claim Offer
             </button>
             <button
-              className="mt-3 text-gray-500 hover:text-gray-700 text-sm"
+              className="mt-2 sm:mt-3 text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
               onClick={() => setShowDiscountPopup(false)}
             >
               Close
@@ -378,39 +380,39 @@ function AppContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4"
         >
           <motion.div
             initial={{ scale: 0.7 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.7 }}
-            className="bg-white p-4 sm:p-6 rounded-lg shadow-2xl max-w-md w-full mx-4"
+            className="bg-white p-3 sm:p-4 md:p-6 rounded-lg shadow-2xl max-w-xs sm:max-w-md w-full mx-2 sm:mx-4"
           >
             <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Get a Free Consultation</h3>
-            <p className="text-xs sm:text-sm text-gray-600 mb-4">Fill out the form to schedule a free marketing consultation.</p>
-            <form className="space-y-3">
+            <p className="text-xs sm:text-sm text-gray-600 mb-3">Fill out the form to schedule a free marketing consultation.</p>
+            <form className="space-y-2 sm:space-y-3">
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
+                className="w-full p-1 sm:p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-xs sm:text-sm"
                 aria-label="Your name"
               />
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
+                className="w-full p-1 sm:p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-xs sm:text-sm"
                 aria-label="Your email"
               />
               <button
                 type="submit"
-                className="w-full bg-yellow-500 text-white px-3 py-2 sm:py-2.5 rounded-lg hover:bg-yellow-600 transition-all text-sm"
+                className="w-full bg-yellow-500 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg hover:bg-yellow-600 transition-all text-xs sm:text-sm"
                 onClick={() => setShowLeadCapturePopup(false)}
               >
                 Submit
               </button>
             </form>
             <button
-              className="mt-3 text-gray-500 hover:text-gray-700 text-sm"
+              className="mt-2 sm:mt-3 text-gray-500 hover:text-gray-700 text-xs sm:text-sm"
               onClick={() => setShowLeadCapturePopup(false)}
             >
               Close
@@ -447,7 +449,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       {/* Hero Section with Enhanced Gradient and Pattern */}
       <header
         id="home"
-        className="relative min-h-[70vh] sm:h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-yellow-100 via-yellow-50 to-white px-4 sm:px-6"
+        className="relative min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-yellow-100 via-yellow-50 to-white px-2 sm:px-4 md:px-6"
       >
         <motion.div
           className="absolute inset-0 z-0"
@@ -469,14 +471,14 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="container mx-auto px-4 md:px-6 relative z-10 text-center"
+          className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10 text-center"
           style={{ y: y2 }}
         >
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-2 sm:mb-4 leading-tight"
           >
             Amplify Your <span className="text-yellow-600">Digital Impact</span>
           </motion.h1>
@@ -484,7 +486,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 max-w-xl mx-auto"
+            className="text-sm sm:text-base md:text-lg text-gray-700 mb-3 sm:mb-6 max-w-xs sm:max-w-md md:max-w-xl mx-auto"
           >
             Bold digital solutions to make your brand unstoppable.
           </motion.p>
@@ -494,20 +496,20 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
-            className="bg-yellow-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-yellow-700 transition-all duration-300 flex items-center mx-auto"
+            className="bg-yellow-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold hover:bg-yellow-700 transition-all duration-300 flex items-center mx-auto"
             aria-label="Get started with our services"
             onClick={() => navigate('/get-started')}
             onKeyDown={(e) => e.key === 'Enter' && navigate('/get-started')}
           >
-            Get Started <ArrowRight className="ml-2 w-5 h-5" />
+            Get Started <ArrowRight className="ml-1 sm:ml-2 w-4 sm:w-5 h-4 sm:h-5" />
           </motion.button>
         </motion.div>
       </header>
 
       {/* Carousel Section with Overlay */}
-      <section className="py-6 sm:py-8 bg-gradient-to-br from-yellow-50 to-white overflow-hidden relative">
+      <section className="py-4 sm:py-6 md:py-8 bg-gradient-to-br from-yellow-50 to-white overflow-hidden relative">
         <div className="absolute inset-0 bg-black bg-opacity-5"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 relative z-10">
           <motion.div
             className="overflow-hidden"
             initial={{ opacity: 0 }}
@@ -523,10 +525,10 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                 },
               }}
             >
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-500 inline-block pr-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-500 inline-block pr-4 sm:pr-8">
                 {carouselSentences[0]}
               </h2>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-500 inline-block pr-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-500 inline-block pr-4 sm:pr-8">
                 {carouselSentences[0]}
               </h2>
             </motion.div>
@@ -538,20 +540,20 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       <AboutUsSection />
 
       {/* Services Section */}
-      <section id="services" className="py-8 sm:py-12 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="services" className="py-6 sm:py-8 md:py-12 bg-white">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-6"
+            className="text-center mb-4 sm:mb-6"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Our Expertise</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-md mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-md mx-auto">
               Tailored digital solutions for your brand.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -560,14 +562,14 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-                className="bg-white p-4 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300"
+                className="bg-white p-2 sm:p-3 md:p-4 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300"
                 role="article"
                 aria-labelledby={`service-title-${index}`}
               >
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-3"
+                  className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2 sm:mb-3"
                 >
                   {service.icon}
                 </motion.div>
@@ -576,7 +578,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.8 }}
                   transition={{ delay: index * 0.1 + 0.1, duration: 0.5, ease: "easeOut" }}
-                  id={`service-title-${index}`} className="text-lg font-semibold text-gray-900 mb-2"
+                  id={`service-title-${index}`} className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 sm:mb-2"
                 >
                   {service.title}
                 </motion.h3>
@@ -585,7 +587,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.8 }}
                   transition={{ delay: index * 0.1 + 0.2, duration: 0.5, ease: "easeOut" }}
-                  className="text-gray-600 text-sm"
+                  className="text-gray-600 text-xs sm:text-sm md:text-base"
                 >
                   {service.description}
                 </motion.p>
@@ -599,18 +601,20 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       <WorkSection workProjects={workProjects} />
 
       {/* How We Generate Leads Section */}
-      <section className="py-8 sm:py-12 bg-gradient-to-b from-yellow-50 to-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">How We Generate Leads</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-6">
+      <section className="py-6 sm:py-8 md:py-12 bg-gradient-to-b from-yellow-50 to-white">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
+            How We Generate Leads
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-xl mx-auto mb-4 sm:mb-6">
             We use data-driven LinkedIn campaigns to connect you with decision-makers.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
-              { icon: <Search className="w-8 h-8 text-yellow-600" />, title: "Find Prospects", desc: "Targeted lists of ideal prospects on LinkedIn." },
-              { icon: <Edit className="w-8 h-8 text-yellow-600" />, title: "Write Messages", desc: "Personalized messages that get responses." },
-              { icon: <Globe className="w-8 h-8 text-yellow-600" />, title: "Execute Outreach", desc: "Send custom messages to thousands." },
-              { icon: <Handshake className="w-8 h-8 text-yellow-600" />, title: "Close Deals", desc: "Get notified when leads respond." },
+              { icon: <Search className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Find Prospects", desc: "Targeted lists of ideal prospects on LinkedIn." },
+              { icon: <Edit className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Write Messages", desc: "Personalized messages that get responses." },
+              { icon: <Globe className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Execute Outreach", desc: "Send custom messages to thousands." },
+              { icon: <Handshake className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-600" />, title: "Close Deals", desc: "Get notified when leads respond." },
             ].map((step, index) => (
               <motion.div
                 key={index}
@@ -618,19 +622,21 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ delay: index * 0.15, duration: 0.7, ease: "easeOut" }}
-                className="flex flex-col items-center text-center p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="flex flex-col items-center text-center p-2 sm:p-3 md:p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <motion.span
                   initial={{ opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.7 }}
                   transition={{ type: "spring", stiffness: 200, damping: 10, delay: index * 0.1 }}
-                  className="w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 mb-4 shadow-md"
+                  className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 flex items-center justify-center rounded-full bg-yellow-100 mb-2 sm:mb-3 md:mb-4 shadow-md"
                 >
                   {step.icon}
                 </motion.span>
-                <h3 className="font-semibold text-base md:text-lg text-gray-900 mb-1">{step.title}</h3>
-                <p className="text-gray-600 text-sm md:text-base">{step.desc}</p>
+                <h3 className="font-semibold text-sm sm:text-base md:text-lg text-gray-900 mb-1">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm md:text-base">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -641,7 +647,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-            className="mt-6 bg-yellow-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-yellow-700 transition-all duration-300"
+            className="mt-4 sm:mt-6 bg-yellow-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold hover:bg-yellow-700 transition-all duration-300"
             onClick={() => setShowDateModal(true)}
             onKeyDown={(e) => e.key === 'Enter' && setShowDateModal(true)}
             aria-label="Schedule a free consultation"
@@ -652,20 +658,22 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 sm:py-12 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="contact" className="py-6 sm:py-8 md:py-12 bg-gray-50">
+        <div className="container mx-auto px-2 sm:px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-lg mx-auto text-center"
+            className="max-w-xs sm:max-w-md md:max-w-lg mx-auto text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Get in Touch</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6">
               Start your digital journey today.
             </p>
-            <form className="space-y-4">
+            <form className="space-y-3 sm:space-y-4">
               <motion.input
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -684,7 +692,7 @@ function HomePage({ services, showDateModal, setShowDateModal, showSubscriptionP
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
                 type="submit"
-                className="w-full bg-yellow-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-yellow-700 transition-all duration-300"
+                className="w-full bg-yellow-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold hover:bg-yellow-700 transition-all duration-300"
                 aria-label="Submit contact form"
                 onClick={() => navigate('/contact')}
                 onKeyDown={(e) => e.key === 'Enter' && navigate('/contact')}
@@ -705,19 +713,19 @@ function AboutPage() {
 
 function ServicesPage({ services }) {
   return (
-    <div className="container mx-auto px-4 md:px-6 py-8 sm:py-12">
+    <div className="container mx-auto px-2 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-6"
+        className="text-center mb-4 sm:mb-6"
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Our Services</h1>
-        <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-md mx-auto">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-md mx-auto">
           Explore our innovative digital solutions.
         </p>
       </motion.div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
         {services.map((service, index) => (
           <motion.div
             key={index}
@@ -726,14 +734,14 @@ function ServicesPage({ services }) {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.6 }}
             whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-            className="bg-white p-4 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300"
+            className="bg-white p-2 sm:p-3 md:p-4 rounded-xl shadow-md border border-gray-100 hover:border-yellow-200 transition-all duration-300"
             role="article"
             aria-labelledby={`service-title-${index}`}
           >
             <motion.div
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-3"
+              className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-2 sm:mb-3"
             >
               {service.icon}
             </motion.div>
@@ -742,7 +750,7 @@ function ServicesPage({ services }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.8 }}
               transition={{ delay: index * 0.1 + 0.1, duration: 0.5, ease: "easeOut" }}
-              id={`service-title-${index}`} className="text-lg font-semibold text-gray-900 mb-2"
+              id={`service-title-${index}`} className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 sm:mb-2"
             >
               {service.title}
             </motion.h3>
@@ -751,7 +759,7 @@ function ServicesPage({ services }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.8 }}
               transition={{ delay: index * 0.1 + 0.2, duration: 0.5, ease: "easeOut" }}
-              className="text-gray-600 text-sm"
+              className="text-gray-600 text-xs sm:text-sm md:text-base"
             >
               {service.description}
             </motion.p>
